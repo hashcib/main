@@ -56,7 +56,7 @@ $(function(){
     $('.hamburger').on('click', function () {
         $(this).toggleClass('open');
         $('.menu').toggleClass('open');
-    });
+    });    
 });
 
 function checkCarousel()
@@ -79,41 +79,6 @@ function checkCarousel()
     }
 }
 
-var sending = false;
-function request(btn)
-{
-    if (sending) {
-        return false;
-    }
-    sending = true;
-
-    var params = {
-        name: $('[name=name]').val(),
-        email: $('[name=email]').val(),
-        question: $('[name=question]').val(),
-    };
-
-    if (
-        params.name == '' ||
-        params.email == '' ||
-        params.question == ''
-    ) {
-        btnAlert(btn, 'fill the fields', '#ffb22b');
-        sending = false;
-        return false;
-    }
-
-    //inside folder
-    $.post('api.php', {action:'request', params:params}, function (data) {
-        if (data.success) {
-            btnAlert(btn, 'Sended', '#06d79c');
-        } else {
-            btnAlert(btn, 'Error', '#ffb22b');
-        }
-        sending = false;
-    }, 'json');
-}
-
 function btnAlert(btn, text, color,)
 {
     btn.data('text', btn.text());
@@ -134,4 +99,3 @@ function onScroll()
         btn.css({'opacity': 0});
     }
 }
-
