@@ -304,6 +304,18 @@ header a.active {
 .linkedin:hover {
   background-image: url(../img/linkedin_green.svg);
 }
+
+.tw {
+  background: url(../img/twitter.svg) no-repeat center;
+  background-size: 100% auto;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+.tw__green,
+.tw:hover {
+  background-image: url(../img/twitter_green.svg);
+
 .menu a {
   margin-right: 30px;
 }
