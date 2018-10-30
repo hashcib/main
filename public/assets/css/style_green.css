@@ -315,7 +315,7 @@ header a.active {
 .tw__green,
 .tw:hover {
   background-image: url(../img/twitter_green.svg);
-
+}
 .menu a {
   margin-right: 30px;
 }
