@@ -38,6 +38,7 @@
     <script src="assets/js/wow.js"></script>
 
     <script src="assets/js/site.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le-YXgUAAAAANQykgT1H_2-KqfsG8-CMxrqacKQ"></script>
 </head>
 
 <body>
@@ -53,7 +54,8 @@
                         --><span class="menu__item"><a href="#management" scrollTo="management">Менеджмент</a></span><!--
                         --><span class="menu__item"><a href="#business" scrollTo="business">Наши услуги</a></span><!--
                         --><span class="menu__item"><a href="#partners" scrollTo="partners">Партнеры</a></span><!--
-                        --><span class="menu__item"><a href="#contacts" scrollTo="contacts">Контакты</a></span>
+                        --><span class="menu__item"><a href="#contacts" scrollTo="contacts">Контакты</a></span><!--
+                        --><span class="menu__item"><a href="#research" id="research_link">Аналитика</a></span>
                         </div>
                         <div class="hideDesktop">
                             <div class="flex">
@@ -78,6 +80,49 @@
                 </div>
             </div>
         </header>
+        <dialog id="research" class="wow fadeInUpSmall">
+            <div class="close">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="title">Аналитика</div>
+            <form method="POST" action="/ton" id="research_form">
+                <div class="form content">
+                    <div class="form__row">
+                        <div class="form__col">
+                            <input type="text" name="name" class="input__man" placeholder="Имя">
+                        </div>
+                        <div class="form__col">
+                            <input type="text" name="surname" class="input__man" placeholder="Фамилия">
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <div class="form__col">
+                            <input type="text" name="company" placeholder="Компания или Сфера">
+                        </div>
+                        <div class="form__col">
+                            <input type="email" name="email" class="input__email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <input type="checkbox" checked>
+                        <label>
+                            Я сознаю, что отчеты HASH CIB предоставляются исключительно в информационных целях, адресованы исключительно аккредитованным инвесторам и профессиональным участникам рынка и не содержат инвестиционных рекомендаций. Я сознаю, что HASH CIB не получает прямого или косвенного вознаграждения за аналитические исследования.
+                        </label>
+                    </div>
+                    <div class="form__row">
+                        <input type="submit" value="отправить" class="btn" data-default="отправить" data-success="спасибо!">
+                    </div>
+                    <p class="text">
+                        Правовая Информация
+                    </p>
+                    <p>
+                            Отчеты HASH CIB не содержат инвестиционных рекомендаций, указаний и руководства к инвестированию, а также не содержат предложений финансового характера. Отчеты HASH CIB не содержат предложения или приглашения участвовать в подписке или приобретении ценных бумаг и не должны восприниматься как таковые. Отчеты HASH CIB не преследуют цели прямо или косвенно склонить к заключению любых сделок или наложения любых видов обязательств на адресата. Отчеты HASH CIB не предназначены для свободного опубликования и доступны только квалифицированным инвесторам и профессиональным участникам рынка в соответствии с нормами применимого законодательства и только в случаях, когда распространение отчетов HASH CIB среди таких квалифицированных инвесторов и профессиональных участников рынка не нарушает нормы применимого законодательства.
+                    </p>
+                </div>
+            </form>
+        </dialog>
         <div class="page page__1">
             <a href="#about" scrollTo="about" class="link__about hideMobile">О нас</a>
 
@@ -202,8 +247,8 @@
                     <a href="tel:+7(495)0090009" class="phone"><img src="assets/img/icon_phone-call.svg"> +7(495)009-00-09</a>
                     <a href="mailto:info@hashcib.com" class="email"><img src="assets/img/icon_email.svg"> info@hashcib.com</a>
                 </div><!--
-                --><div class="wow fadeInRight">
-                    <div class="title" id="form_title">Свяжитесь с нами</div>
+             --><div class="wow fadeInRight">
+                    <div class="title" id="form_title" data-success="Спасибо за ваш отзыв!">Свяжитесь с нами</div>
                     <form name="contact_rus" method="POST" id="feedback_form">
                         <div class="form">
                             <div class="form__row">
@@ -254,18 +299,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        $("#feedback_form").submit(function(e) {
-            e.preventDefault();
-            $("#feedback_form").prop("disabled", true);
-            var $form = $(this);
-            $.post('/feedback', $form.serialize()).then(function() {
-                $("#feedback_form").hide()
-                $("#feedback_form").trigger('reset')
-                $("#form_title").text("Спасибо за ваш отзыв!")
-            });
-        });
-    </script>
 
     <!--<canvas class="background"></canvas>-->
     <!--<script src="assets/js/particles.js/particles.js"></script>-->
