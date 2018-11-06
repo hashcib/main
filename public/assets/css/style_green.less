@@ -406,12 +406,20 @@ p{
 dialog {
   position: fixed;
   z-index: 100;
+  display: none;
   margin: 0 auto;
   padding: 30px 15px;
   color: inherit;
   font-size: 14px;
   background: #F7F7F7;
   border: 3px solid #6E9756;
+
+  // WORKAROUND for Edge.
+  left: 0; right: 0;
+
+  &[open="false"] {
+    display: none;
+  }
 
   .close {
     z-index: 1;
@@ -458,6 +466,10 @@ dialog {
   }
 }
 
+dialog[open] {
+  display: block;
+}
+
 #research {
   width: 100%;
   max-width: 900px;
@@ -497,6 +509,23 @@ input[type="checkbox"]:checked::after {
 }
 input[type="checkbox"] + label {
   margin-left: 18px;
+}
+
+form {
+  input:invalid {
+    background-color: #FFCDD2;
+  }
+  input[type="checkbox"]:invalid {
+    border-color: #EF5350;
+  }
+}
+form[novalidate] {
+  input:invalid {
+    background-color: #FFF;
+  }
+  input[type="checkbox"]:invalid {
+    border-color: #7B965A;
+  }
 }
 
 .grecaptcha-badge {

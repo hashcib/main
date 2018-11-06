@@ -87,27 +87,27 @@
                 <span></span>
             </div>
             <div class="title">RESEARCH</div>
-            <form method="POST" action="/ton" id="research_form">
+            <form method="POST" action="/ton" id="research_form" novalidate="novalidate">
                 <div class="form content">
                     <div class="form__row">
                         <div class="form__col">
-                            <input type="text" name="name" class="input__man" placeholder="First Name">
+                            <input type="text" name="name" class="input__man" placeholder="First Name" maxLength="256" required>
                         </div>
                         <div class="form__col">
-                            <input type="text" name="surname" class="input__man" placeholder="Last Name">
+                            <input type="text" name="surname" class="input__man" placeholder="Last Name" maxLength="256" required>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__col">
-                            <input type="text" name="company" placeholder="Company or Capacity">
+                            <input type="text" name="company" placeholder="Company or Capacity" maxLength="256" required>
                         </div>
                         <div class="form__col">
-                            <input type="email" name="email" class="input__email" placeholder="Email">
+                            <input type="email" name="email" class="input__email" placeholder="Email" maxLength="256" required>
                         </div>
                     </div>
                     <div class="form__row">
-                        <input type="checkbox" checked>
-                        <label>
+                        <input id="disclaimer" type="checkbox" checked required>
+                        <label for="disclaimer">
                             I understand that reports by HASH CIB are provided solely as general information about developments in cryptoassets to institutions and investment professionals only and do not constitute investment advice or recommendations. I understand that HASH CIB does not directly or indirectly accept payment for research.
                         </label>
                     </div>
@@ -247,18 +247,18 @@
                 </div><!--
              --><div class="wow fadeInRight">
                     <div class="title" id="form_title" data-success="THANK YOU FOR YOUR FEEDBACK!">GET IN TOUCH</div>
-                    <form name="contact_eng" method="POST" action="/feedback" id="feedback_form">
+                    <form name="contact_eng" method="POST" action="/feedback" id="feedback_form" novalidate="novalidate">
                         <div class="form">
                             <div class="form__row">
                                 <div class="form__col">
-                                    <input type="text" name="name" class="input__man" placeholder="Name">
+                                    <input type="text" name="name" class="input__man" placeholder="Name" maxLength="256" required>
                                 </div>
                                 <div class="form__col">
-                                    <input type="email" name="email" class="input__email" placeholder="Email">
+                                    <input type="email" name="email" class="input__email" placeholder="Email" maxLength="256" required>
                                 </div>
                             </div>
                             <div class="form__row">
-                                <input type="text" name="question" class="input__question" placeholder="Your question">
+                                <input type="text" name="question" class="input__question" placeholder="Your question" maxLength="1024" required>
                             </div>
                             <input type="submit" value="send" name="send" class="btn"/>
                         </div>

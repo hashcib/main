@@ -87,27 +87,27 @@
                 <span></span>
             </div>
             <div class="title">Аналитика</div>
-            <form method="POST" action="/ton" id="research_form">
+            <form method="POST" action="/ton" id="research_form" novalidate="novalidate">
                 <div class="form content">
                     <div class="form__row">
                         <div class="form__col">
-                            <input type="text" name="name" class="input__man" placeholder="Имя">
+                            <input type="text" name="name" class="input__man" placeholder="Имя" maxLength="256" required>
                         </div>
                         <div class="form__col">
-                            <input type="text" name="surname" class="input__man" placeholder="Фамилия">
+                            <input type="text" name="surname" class="input__man" placeholder="Фамилия" maxLength="256" required>
                         </div>
                     </div>
                     <div class="form__row">
                         <div class="form__col">
-                            <input type="text" name="company" placeholder="Компания или Сфера">
+                            <input type="text" name="company" placeholder="Компания или Сфера" maxLength="256" required>
                         </div>
                         <div class="form__col">
-                            <input type="email" name="email" class="input__email" placeholder="Email">
+                            <input type="email" name="email" class="input__email" placeholder="Email" maxLength="256" required>
                         </div>
                     </div>
                     <div class="form__row">
-                        <input type="checkbox" checked>
-                        <label>
+                        <input id="disclaimer" type="checkbox" checked required>
+                        <label id="disclaimer">
                             Я сознаю, что отчеты HASH CIB предоставляются исключительно в информационных целях в отношении развития цифровых финансовых технологий, адресованы исключительно организациям и лицам, профессионально заинтересованным в информации о цифровых активах, и не содержат указаний или рекомендаций инвестиционного характера. Я сознаю, что HASH CIB не получает прямого или косвенного вознаграждения за аналитические исследования.
                         </label>
                     </div>
@@ -249,18 +249,18 @@
                 </div><!--
              --><div class="wow fadeInRight">
                     <div class="title" id="form_title" data-success="Спасибо за ваш отзыв!">Свяжитесь с нами</div>
-                    <form name="contact_rus" method="POST" id="feedback_form">
+                    <form name="contact_rus" method="POST" id="feedback_form" novalidate="novalidate">
                         <div class="form">
                             <div class="form__row">
                                 <div class="form__col">
-                                    <input type="text" name="name" class="input__man" placeholder="Имя">
+                                    <input type="text" name="name" class="input__man" placeholder="Имя" maxLength="256" required>
                                 </div>
                                 <div class="form__col">
-                                    <input type="email" name="email" class="input__email" placeholder="Email">
+                                    <input type="email" name="email" class="input__email" placeholder="Email" maxLength="256" required>
                                 </div>
                             </div>
                             <div class="form__row">
-                                <input type="text" name="question" class="input__question" placeholder="Ваш вопрос">
+                                <input type="text" name="question" class="input__question" placeholder="Ваш вопрос" maxLength="1024" required>
                             </div>
                             <input type="submit" value="отправить" name="send" class="btn"/>
                         </div>

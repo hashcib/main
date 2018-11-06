@@ -106,6 +106,11 @@ function onFeedbackSubmit(event) {
     event.preventDefault();
     var $form = $(this),
         $title = $('#form_title');
+    if ($form.attr('novalidate')) {
+        $form.removeAttr('novalidate');
+        $form.get(0).reportValidity();
+        return;
+    }
     if ($form.attr('disabled')) {
         return;
     }
@@ -121,6 +126,7 @@ function onFeedbackSubmit(event) {
                         $form.hide();
                         $form.trigger('reset');
                         $form.attr('disabled', false);
+                        $form.attr('novalidate', 'novalidate');
                         $title.text($title.data('success'));
                     }).catch(function() {
                         $form.attr('disabled', false);
@@ -156,7 +162,12 @@ function onResearchOpen(event) {
 function onResearchSubmit(event) {
     event.preventDefault();
     var $form = $(this);
-    if ($form.attr('disabled') || !$('input[type="checkbox"]', $form).get(0).checked) {
+    if ($form.attr('novalidate')) {
+        $form.removeAttr('novalidate');
+        $form.get(0).reportValidity();
+        return;
+    }
+    if ($form.attr('disabled')) {
         return;
     }
     $form.attr('disabled', true);
@@ -189,6 +200,7 @@ function onResearchClose() {
 
     $form.trigger('reset');
     $form.attr('disabled', false);
+    $form.attr('novalidate', 'novalidate');
 
     $('.hamburger').removeClass('open');
     $('.menu').removeClass('open');
