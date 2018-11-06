@@ -38,6 +38,7 @@
     <script src="assets/js/wow.js"></script>
 
     <script src="assets/js/site.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le-YXgUAAAAANQykgT1H_2-KqfsG8-CMxrqacKQ"></script>
 </head>
 
 <body>
@@ -53,7 +54,8 @@
                         --><span class="menu__item"><a href="#management" scrollTo="management">MANAGEMENT</a></span><!--
                         --><span class="menu__item"><a href="#business" scrollTo="business">OUR SERVICES</a></span><!--
                         --><span class="menu__item"><a href="#partners" scrollTo="partners">PARTNERS</a></span><!--
-                        --><span class="menu__item"><a href="#contacts" scrollTo="contacts">CONTACTS</a></span>
+                        --><span class="menu__item"><a href="#contacts" scrollTo="contacts">CONTACTS</a></span><!--
+                        --><span class="menu__item"><a href="#research" id="research_link">RESEARCH</a></span>
                         </div>
                         <div class="hideDesktop">
                             <div class="flex">
@@ -78,6 +80,49 @@
                 </div>
             </div>
         </header>
+        <dialog id="research" class="wow fadeInUpSmall">
+            <div class="close">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="title">RESEARCH</div>
+            <form method="POST" action="/ton" id="research_form">
+                <div class="form content">
+                    <div class="form__row">
+                        <div class="form__col">
+                            <input type="text" name="name" class="input__man" placeholder="First Name">
+                        </div>
+                        <div class="form__col">
+                            <input type="text" name="surname" class="input__man" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <div class="form__col">
+                            <input type="text" name="company" placeholder="Company or Capacity">
+                        </div>
+                        <div class="form__col">
+                            <input type="email" name="email" class="input__email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <input type="checkbox" checked>
+                        <label>
+                            I understand that reports by HASH CIB are provided solely as general information about developments in cryptoassets to institutions and investment professionals only and do not constitute investment advice or recommendations. I understand that HASH CIB does not directly or indirectly accept payment for research.
+                        </label>
+                    </div>
+                    <div class="form__row">
+                        <input type="submit" value="send" class="btn" data-default="send" data-success="thank you!">
+                    </div>
+                    <p class="text">
+                        Legal Disclaimer
+                    </p>
+                    <p>
+                        HASH CIB reports should not be construed as constituting any form of investment advice or recommendation, guidance or proposal of a financial nature. HASH CIB reports do not constitute or form part of, and should not be construed as, an offer, solicitation or invitation to subscribe for or purchase any securities, and neither of HASH CIB reports nor anything contained therein shall form the basis of or be relied on in connection with or act as an inducement to enter into any contract or commitment whatsoever. HASH CIB reports are not published generally and are available to institutions and investment professionals only in respective jurisdictions and solely to the extent such dissemination does not breach applicable laws and regulations.
+                    </p>
+                </div>
+            </form>
+        </dialog>
         <div class="page page__1" style="background-image: url(assets/img/green/bg.png)">
             <a href="#about" scrollTo="about" class="link__about hideMobile">About us</a>
 
@@ -200,9 +245,9 @@
                     <a href="tel:+7(495)0090009" class="phone"><img src="assets/img/icon_phone-call.svg"> +7(495)009-00-09</a>
                     <a href="mailto:info@hashcib.com" class="email"><img src="assets/img/icon_email.svg"> info@hashcib.com</a>
                 </div><!--
-                --><div class="wow fadeInRight">
-                    <div class="title" id="form_title">GET IN TOUCH</div>
-                    <form name="contact_eng" method="POST" id="feedback_form">
+             --><div class="wow fadeInRight">
+                    <div class="title" id="form_title" data-success="THANK YOU FOR YOUR FEEDBACK!">GET IN TOUCH</div>
+                    <form name="contact_eng" method="POST" action="/feedback" id="feedback_form">
                         <div class="form">
                             <div class="form__row">
                                 <div class="form__col">
@@ -252,18 +297,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        $("#feedback_form").submit(function(e) {
-        e.preventDefault();
-        $("#feedback_form").prop("disabled", true);
-        var $form = $(this);
-        $.post('/feedback', $form.serialize()).then(function() {
-            $("#feedback_form").hide()
-            $("#feedback_form").trigger('reset')
-            $("#form_title").text("THANK YOU FOR YOUR FEEDBACK!")
-        });
-    });
-    </script>
 
     <!--<canvas class="background"></canvas>-->
     <!--<script src="assets/js/particles.js/particles.js"></script>-->
