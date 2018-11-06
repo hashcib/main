@@ -15,33 +15,30 @@ function postToSlack(payload) {
     body: {
       username: "Hasch CIB Message Bot",
       icon_emoji: ":incoming_envelope:",
-      attachments: [
-        {
-            fallback: "Hash CIB Feddback Form",
-            "color": "#7B965A",
-            title: "The following message was sent",
-            fields: [
-                {
-                    title: "Name",
-                    value: payload.name,
-                    short: false
-                },
-                {
-                  title: "Email",
-                  value: payload.email,
-                  short: false
-                },
-                {
-                  title: "Question",
-                  value: payload.question,
-                  short: false
-                }
-            ],
-            footer: "Hash CIB",
-            footer_icon: "https://hashcib.com/assets/img/favicon_green.png",
-            ts: Date.now() / 1000
-        }
-      ]
+      attachments: [{
+        fallback: "Hash CIB Feddback Form",
+        "color": "#7B965A",
+        title: "The following message was sent",
+        fields: [{
+            title: "Name",
+            value: payload.name,
+            short: false
+          },
+          {
+            title: "Email",
+            value: payload.email,
+            short: false
+          },
+          {
+            title: "Question",
+            value: payload.question,
+            short: false
+          }
+        ],
+        footer: "Hash CIB",
+        footer_icon: "https://hashcib.com/assets/img/favicon_green.png",
+        ts: Date.now() / 1000
+      }]
     },
     json: true,
   });
@@ -54,40 +51,37 @@ function getTonSlackPayload(payload) {
     body: {
       username: "Hasch CIB Message Bot",
       icon_emoji: ":incoming_envelope:",
-      attachments: [
-        {
-            fallback: "Hash CIB Feddback Form",
-            "color": "#7B965A",
-            title: "The following TON Research request was sent",
-            fields: [
-                {
-                    title: "Name",
-                    value: payload.name + payload.surname,
-                    short: false
-                },
-                {
-                  title: "Email",
-                  value: payload.email,
-                  short: false
-                },
-                {
-                  title: "Company",
-                  value: payload.company,
-                  short: false
-                }
-            ],
-            footer: "Hash CIB",
-            footer_icon: "https://hashcib.com/assets/img/favicon_green.png",
-            ts: Date.now() / 1000
-        }
-      ]
+      attachments: [{
+        fallback: "Hash CIB Feddback Form",
+        "color": "#7B965A",
+        title: "The following TON Research request was sent",
+        fields: [{
+            title: "Name",
+            value: payload.name + " " + payload.surname,
+            short: false
+          },
+          {
+            title: "Email",
+            value: payload.email,
+            short: false
+          },
+          {
+            title: "Company",
+            value: payload.company,
+            short: false
+          }
+        ],
+        footer: "Hash CIB",
+        footer_icon: "https://hashcib.com/assets/img/favicon_green.png",
+        ts: Date.now() / 1000
+      }]
     },
     json: true,
   };
 }
 
 function getMailRequestPayload(payload) {
-  if(payload.email !== undefined) {
+  if (payload.email !== undefined) {
     return {
       from: 'HashCIB Message Bot <info@hashcib.com>',
       to: "kalambet@qiwi.tech, i.khrulev@qiwi.tech",
@@ -103,7 +97,7 @@ exports.feedback = functions.https.onRequest((req, res) => {
     return res.status(405).send('Method not allowed');
   }
 
-  if(req.body === undefined) {
+  if (req.body === undefined) {
     return res.status(200).send('OK');
   }
 
@@ -111,7 +105,7 @@ exports.feedback = functions.https.onRequest((req, res) => {
     try {
       await postToSlack(req.body);
       return res.status(200).send('OK');
-    } catch(error) {
+    } catch (error) {
       console.error(error);
       return res.status(500).send('Something went wrong while posting the message to Slack.');
     }
@@ -131,11 +125,11 @@ exports.ton = functions.https.onRequest((req, res) => {
     return res.status(405).send('Method not allowed');
   }
 
-  if(req.body === undefined) {
+  if (req.body === undefined) {
     return res.status(200).send('OK');
   }
 
-  if(req.body === undefined || req.body.gtoken === undefined) {
+  if (req.body === undefined || req.body.gtoken === undefined) {
     return res.status(415).send('No payload we can work with :(');
   }
 
@@ -151,7 +145,7 @@ exports.ton = functions.https.onRequest((req, res) => {
         console.log(body);
       });
       return res.status(200).send('OK');
-    } catch(error) {
+    } catch (error) {
       console.error(error);
       return res.status(500).send('Something went wrong while posting the message to Slack.');
     }
