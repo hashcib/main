@@ -104,12 +104,15 @@ function onScroll() {
 
 function onFeedbackSubmit(event) {
     event.preventDefault();
-    var $form = $(this),
+    var form = this,
+        $form = $(form),
         $title = $('#form_title');
     if ($form.attr('novalidate')) {
         $form.removeAttr('novalidate');
-        $form.get(0).reportValidity();
-        return;
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
     }
     if ($form.attr('disabled')) {
         return;
@@ -161,11 +164,14 @@ function onResearchOpen(event) {
 
 function onResearchSubmit(event) {
     event.preventDefault();
-    var $form = $(this);
+    var form = this,
+        $form = $(form);
     if ($form.attr('novalidate')) {
         $form.removeAttr('novalidate');
-        $form.get(0).reportValidity();
-        return;
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
     }
     if ($form.attr('disabled')) {
         return;
