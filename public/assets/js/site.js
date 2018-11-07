@@ -20,7 +20,7 @@ $(function() {
         'management',
         'business',
         'partners',
-        'contacts',
+        'contacts'
     ];
 
     for (var key in scenes) {
@@ -41,6 +41,10 @@ $(function() {
     });
     $(window).on('scroll', function () {
         onScroll();
+    });
+    $(window).on('hashchange', function () {
+        location.hash === '#research' &&
+            onResearchOpen();
     });
 
     $('a[scrollTo]').on('click', function () {
@@ -63,6 +67,9 @@ $(function() {
     $('#research_link').on('click', onResearchOpen);
     $('#research_form').on('submit', onResearchSubmit);
     $('#research .close').on('click', onResearchClose);
+
+    location.hash === '#research' &&
+        onResearchOpen();
 });
 
 function checkCarousel() {
@@ -139,7 +146,8 @@ function onFeedbackSubmit(event) {
 }
 
 function onResearchOpen(event) {
-    event.preventDefault();
+    event &&
+        event.preventDefault();
     var $dialog = $('#research'),
         dialog = $dialog.get(0);
     dialog.show ?
@@ -163,7 +171,8 @@ function onResearchOpen(event) {
 }
 
 function onResearchSubmit(event) {
-    event.preventDefault();
+    event &&
+        event.preventDefault();
     var form = this,
         $form = $(form);
     if ($form.attr('novalidate')) {
