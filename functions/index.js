@@ -7,6 +7,11 @@ const cors = require('cors')({
   optionsSuccessStatus: 200
 });
 const rp = require('request-promise');
+const mailgun = require('mailgun-js')({
+  apiKey: functions.config().hash.mailgun,
+  domain: "mg.hashcib.com"
+});
+
 
 function postToSlack(payload) {
   return rp({
@@ -84,9 +89,9 @@ function getMailRequestPayload(payload) {
   if (payload.email !== undefined) {
     return {
       from: 'HashCIB Message Bot <info@hashcib.com>',
-      to: "kalambet@qiwi.tech, i.khrulev@qiwi.tech",
+      to: "research@hashcib.com",
       subject: 'Новый завпрос на TON Research',
-      html: "<html><body><p>Привет,</p><p>Новый запрос:</p><ul><li><b>Имя:</b> " + payload.name + " " + paylaod.surname + "</li><li><b>Email:</b> " + payload.email + "</li><li><b>Компания:</b> " + payload.company + "</li></ul><p>/HashCIB Message Bot</p></body></html>"
+      html: "<html><body><p>Привет,</p><p>Новый запрос:</p><ul><li><b>Имя:</b> " + payload.name + " " + payload.surname + "</li><li><b>Email:</b> " + payload.email + "</li><li><b>Компания:</b> " + payload.company + "</li></ul><p>/HashCIB Message Bot</p></body></html>"
     }
   }
   return undefined;
