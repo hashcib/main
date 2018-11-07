@@ -628,6 +628,9 @@ dialog .form__row,
 dialog p {
   text-align: justify;
 }
+dialog .text {
+  line-height: 1;
+}
 dialog .btn {
   margin-left: auto;
 }
