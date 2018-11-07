@@ -164,7 +164,8 @@ function onResearchOpen(event) {
 
     $('.link__about').css({'opacity': 0, visibility: 'hidden'});
     $('.page').slice(1).hide();
-    $('footer').hide();
+    // WORKAROUND
+    $('footer').attr('style', 'display: none !important');
     controller.enabled(false);
     // WORKAROUND for ScrollMagic.
     $('#header .menu .active').removeClass('active');
@@ -222,7 +223,8 @@ function onResearchClose() {
 
     $('.link__about').css({'opacity': 1, visibility: 'visible'});
     $('.page').show();
-    $('footer').attr('style', null); // WORKAROUND
+    // WORKAROUND
+    $('footer').attr('style', null);
     controller.enabled(true);
     // WORKAROUND for ScrollMagic.
     $('#header .menu .active').removeClass('active');
