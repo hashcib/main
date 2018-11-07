@@ -571,7 +571,7 @@ p + p {
   display: none;
 }
 dialog {
-  position: fixed;
+  position: absolute;
   z-index: 100;
   display: none;
   margin: 0 auto;
@@ -585,6 +585,9 @@ dialog {
 }
 dialog[open="false"] {
   display: none;
+}
+dialog[open] {
+  display: block;
 }
 dialog .close {
   z-index: 1;
@@ -627,9 +630,6 @@ dialog p {
 }
 dialog .btn {
   margin-left: auto;
-}
-dialog[open] {
-  display: block;
 }
 #research {
   width: 100%;

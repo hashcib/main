@@ -404,7 +404,7 @@ p{
 }
 
 dialog {
-  position: fixed;
+  position: absolute;
   z-index: 100;
   display: none;
   margin: 0 auto;
@@ -419,6 +419,10 @@ dialog {
 
   &[open="false"] {
     display: none;
+  }
+
+  &[open] {
+    display: block;
   }
 
   .close {
@@ -464,10 +468,6 @@ dialog {
   .btn {
     margin-left: auto;
   }
-}
-
-dialog[open] {
-  display: block;
 }
 
 #research {
