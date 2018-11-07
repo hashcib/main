@@ -222,7 +222,7 @@ function onResearchClose() {
 
     $('.link__about').css({'opacity': 1, visibility: 'visible'});
     $('.page').show();
-    $('footer').show();
+    $('footer').attr('style', null); // WORKAROUND
     controller.enabled(true);
     // WORKAROUND for ScrollMagic.
     $('#header .menu .active').removeClass('active');
