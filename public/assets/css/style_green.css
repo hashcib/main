@@ -1,5 +1,22 @@
 @import url(../fonts/fonts.css);
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&subset=cyrillic');
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fABc9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fABc9.ttf) format('truetype');
+}
 * {
   box-sizing: border-box;
 }
@@ -7,6 +24,7 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  overflow-y: scroll;
 }
 body {
   margin: 0;
@@ -304,7 +322,6 @@ header a.active {
 .linkedin:hover {
   background-image: url(../img/linkedin_green.svg);
 }
-
 .tw {
   background: url(../img/twitter.svg) no-repeat center;
   background-size: 100% auto;
@@ -548,10 +565,124 @@ p + p {
   margin-top: 30px;
 }
 .hideMobile {
-  display: block!important;
+  display: block;
 }
 .hideDesktop {
-  display: none!important;
+  display: none;
+}
+dialog {
+  position: fixed;
+  z-index: 100;
+  display: none;
+  margin: 0 auto;
+  padding: 30px 15px;
+  color: inherit;
+  font-size: 14px;
+  background: #F7F7F7;
+  border: 3px solid #6E9756;
+  left: 0;
+  right: 0;
+}
+dialog[open="false"] {
+  display: none;
+}
+dialog .close {
+  z-index: 1;
+  height: 18px;
+  width: 28px;
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  top: 27px;
+  right: 15px;
+}
+dialog .close span:nth-child(2) {
+  opacity: 0;
+}
+dialog .close span:nth-child(1) {
+  transform: translate3d(0, 8px, 0) rotate(45deg);
+}
+dialog .close span:nth-child(3) {
+  transform: translate3d(0, -8px, 0) rotate(-45deg);
+}
+dialog .close span {
+  opacity: 1;
+  transform-origin: 50% 50%;
+  background: #000000;
+  display: block;
+  height: 2px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+dialog .close span:nth-child(2) {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+dialog .form__row {
+  margin-bottom: 30px;
+}
+dialog .form__row,
+dialog p {
+  text-align: justify;
+}
+dialog .btn {
+  margin-left: auto;
+}
+dialog[open] {
+  display: block;
+}
+#research {
+  width: 100%;
+  max-width: 900px;
+}
+#research .content {
+  padding: 0 200px;
+}
+#research_link {
+  margin-left: 60px;
+  color: #7B965A;
+}
+input[type="checkbox"] {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  background: #fff;
+  border: 2px solid #7B965A;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+input[type="checkbox"]::after {
+  display: inline-block;
+  margin-left: 1px;
+  line-height: 1;
+  font-weight: bold;
+  color: transparent;
+  content: "✓";
+}
+input[type="checkbox"]:checked::after {
+  color: #7B965A;
+}
+input[type="checkbox"] + label {
+  margin-left: 18px;
+}
+form input:invalid {
+  background-color: #FFCDD2;
+}
+form input[type="checkbox"]:invalid {
+  border-color: #EF5350;
+}
+form[novalidate] input:invalid {
+  background-color: #FFF;
+}
+form[novalidate] input[type="checkbox"]:invalid {
+  border-color: #7B965A;
+}
+.grecaptcha-badge {
+  display: none !important;
 }
 @media only screen and (max-width: 1400px) {
   .content__footer {
@@ -793,5 +924,32 @@ p + p {
     margin-top: 6px;
     margin-bottom: 6px;
   }
+  dialog {
+    position: absolute;
+    top: 0;
+    margin: 0 !important;
+    border: 0;
+  }
+  dialog .text {
+    text-align: center;
+  }
+  dialog .form__row {
+    margin-bottom: 15px;
+  }
+  dialog p + p {
+    margin-top: 15px;
+  }
+  dialog input[type="checkbox"] {
+    float: left;
+    margin: 0 18px 1em 0;
+  }
+  dialog input[type="checkbox"] + label {
+    margin: 0;
+  }
+  #research .content {
+    padding: 0;
+  }
+  #research_link {
+    margin-left: 0;
+  }
 }
-/*# sourceMappingURL=style_green.css.map */

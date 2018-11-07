@@ -6,9 +6,31 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [{
-        "source": "/feedback", "function": "feedback" 
-      }]
+    "redirects": [
+      {
+        "source": "/index.html", "destination": "/", "type": 301
+      },
+      {
+        "source": "/ru.html", "destination": "/ru", "type": 301
+      },
+      {
+        "source": "/research", "destination": "/#research", "type": 302
+      },
+      {
+        "source": "/ru/research", "destination": "/ru#research", "type": 302
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/ru", "destination": "/ru.html"
+      },
+      {
+        "source": "/feedback", "function": "feedback"
+      },
+      {
+        "source": "/ton", "function": "ton"
+      }
+    ]
   },
   "functions": {
     "predeploy": [

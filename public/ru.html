@@ -38,6 +38,7 @@
     <script src="assets/js/wow.js"></script>
 
     <script src="assets/js/site.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le-YXgUAAAAANQykgT1H_2-KqfsG8-CMxrqacKQ"></script>
 </head>
 
 <body>
@@ -53,14 +54,15 @@
                         --><span class="menu__item"><a href="#management" scrollTo="management">Менеджмент</a></span><!--
                         --><span class="menu__item"><a href="#business" scrollTo="business">Наши услуги</a></span><!--
                         --><span class="menu__item"><a href="#partners" scrollTo="partners">Партнеры</a></span><!--
-                        --><span class="menu__item"><a href="#contacts" scrollTo="contacts">Контакты</a></span>
+                        --><span class="menu__item"><a href="#contacts" scrollTo="contacts">Контакты</a></span><!--
+                        --><span class="menu__item"><a href="#research" id="research_link">Аналитика</a></span>
                         </div>
                         <div class="hideDesktop">
                             <div class="flex">
                                 <a href="https://www.facebook.com/HASH-Crypto-Investment-Bank-965732960288787/" class="social fb fb__green"></a>
                                 <a href="https://www.linkedin.com/company/hashcib/" class="social linkedin linkedin__green"></a>
                                 <span class="delimiter"></span>
-                                <a href="index.html">ENG</a>
+                                <a href="/">ENG</a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +71,7 @@
                     <a href="https://www.facebook.com/HASH-Crypto-Investment-Bank-965732960288787/" class="social fb fb__green"></a>
                     <a href="https://www.linkedin.com/company/hashcib/" class="social linkedin linkedin__green"></a>
                     <span class="delimiter"></span>
-                    <a href="index.html">ENG</a>
+                    <a href="/">ENG</a>
                 </div>
                 <div class="hamburger">
                     <span></span>
@@ -78,6 +80,49 @@
                 </div>
             </div>
         </header>
+        <dialog id="research" class="wow fadeInUpSmall">
+            <div class="close">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="title">Аналитика</div>
+            <form method="POST" action="/ton" id="research_form" novalidate="novalidate">
+                <div class="form content">
+                    <div class="form__row">
+                        <div class="form__col">
+                            <input type="text" name="name" class="input__man" placeholder="Имя" autocomplete="given-name" maxLength="256" required>
+                        </div>
+                        <div class="form__col">
+                            <input type="text" name="surname" class="input__man" placeholder="Фамилия" autocomplete="family-name" maxLength="256" required>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <div class="form__col">
+                            <input type="text" name="company" placeholder="Компания" maxLength="256" required>
+                        </div>
+                        <div class="form__col">
+                            <input type="email" name="email" class="input__email" placeholder="Email" autocomplete="email" maxLength="256" required>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <input id="disclaimer" type="checkbox" required>
+                        <label id="disclaimer">
+                            Я сознаю, что отчеты HASH CIB предоставляются исключительно в информационных целях в отношении развития цифровых финансовых технологий, адресованы исключительно организациям и лицам, профессионально заинтересованным в информации о цифровых активах, и не содержат указаний или рекомендаций инвестиционного характера. Я сознаю, что HASH CIB не получает прямого или косвенного вознаграждения за аналитические исследования.
+                        </label>
+                    </div>
+                    <div class="form__row">
+                        <input type="submit" value="отправить" class="btn" data-default="отправить" data-success="спасибо!">
+                    </div>
+                    <p class="text">
+                        Правовая Информация
+                    </p>
+                    <p>
+                        Отчеты HASH CIB не содержат инвестиционных рекомендаций, указаний или руководства к инвестированию, а также не содержат предложений финансового характера. Отчеты HASH CIB не содержат предложения или приглашения участвовать в подписке или приобретении ценных бумаг и не должны восприниматься как таковые. Отчеты HASH CIB не преследуют цели прямо или косвенно склонить к заключению любых сделок или наложить любые виды обязательств на адресата. Отчеты HASH CIB не предназначены для свободного опубликования и доступны только организациям и лицам, профессионально заинтересованных в информации о цифровых активах, в соответствии с нормами применимого законодательства и только в случаях, когда распространение отчетов HASH CIB среди таких лиц не нарушает норм применимого законодательства.
+                    </p>
+                </div>
+            </form>
+        </dialog>
         <div class="page page__1">
             <a href="#about" scrollTo="about" class="link__about hideMobile">О нас</a>
 
@@ -202,20 +247,20 @@
                     <a href="tel:+7(495)0090009" class="phone"><img src="assets/img/icon_phone-call.svg"> +7(495)009-00-09</a>
                     <a href="mailto:info@hashcib.com" class="email"><img src="assets/img/icon_email.svg"> info@hashcib.com</a>
                 </div><!--
-                --><div class="wow fadeInRight">
-                    <div class="title" id="form_title">Свяжитесь с нами</div>
-                    <form name="contact_rus" method="POST" id="feedback_form">
+             --><div class="wow fadeInRight">
+                    <div class="title" id="form_title" data-success="Спасибо за ваш отзыв!">Свяжитесь с нами</div>
+                    <form name="contact_rus" method="POST" id="feedback_form" novalidate="novalidate">
                         <div class="form">
                             <div class="form__row">
                                 <div class="form__col">
-                                    <input type="text" name="name" class="input__man" placeholder="Имя">
+                                    <input type="text" name="name" class="input__man" placeholder="Имя" autocomplete="name" maxLength="256" required>
                                 </div>
                                 <div class="form__col">
-                                    <input type="email" name="email" class="input__email" placeholder="Email">
+                                    <input type="email" name="email" class="input__email" placeholder="Email" autocomplete="email" maxLength="256" required>
                                 </div>
                             </div>
                             <div class="form__row">
-                                <input type="text" name="question" class="input__question" placeholder="Ваш вопрос">
+                                <input type="text" name="question" class="input__question" placeholder="Ваш вопрос" maxLength="1024" required>
                             </div>
                             <input type="submit" value="отправить" name="send" class="btn"/>
                         </div>
@@ -254,18 +299,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        $("#feedback_form").submit(function(e) {
-            e.preventDefault();
-            $("#feedback_form").prop("disabled", true);
-            var $form = $(this);
-            $.post('/feedback', $form.serialize()).then(function() {
-                $("#feedback_form").hide()
-                $("#feedback_form").trigger('reset')
-                $("#form_title").text("Спасибо за ваш отзыв!")
-            });
-        });
-    </script>
 
     <!--<canvas class="background"></canvas>-->
     <!--<script src="assets/js/particles.js/particles.js"></script>-->

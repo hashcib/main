@@ -1,2 +1,7 @@
 # main
-text
+
+```shell
+yarn install
+yarn build
+yarn start
+```
