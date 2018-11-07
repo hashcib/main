@@ -8,10 +8,10 @@
   "license": "MIT",
   "devDependencies": {
     "less": "^3.8.1",
-    "static-server": "^2.2.1"
+    "superstatic": "^6.0.3"
   },
   "scripts": {
-    "start": "static-server ./public --port 8899 --index index.html",
+    "start": "superstatic --config firebase.json --port 8899",
     "build": "lessc public/assets/css/style_blue.less public/assets/css/style_blue.css && lessc public/assets/css/style_green.less public/assets/css/style_green.css"
   }
 }

@@ -6,12 +6,17 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [{
+    "rewrites": [
+      {
+        "source": "/ru", "destination": "/ru.html" 
+      },
+      {
         "source": "/feedback", "function": "feedback" 
       },
       {
         "source": "/ton", "function": "ton" 
-      }]
+      }
+    ]
   },
   "functions": {
     "predeploy": [
