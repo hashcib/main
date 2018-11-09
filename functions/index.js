@@ -80,22 +80,36 @@ function getTonSlackPayload(payload) {
   };
 }
 
+function generateReportRequestLink(payload) { 
+  return functions.config().hash.tonurl +
+    "?token=" + functions.config().hash.tonsecret +
+    "&name=" + encodeURI(payload.name + " " + payload.surname) +
+    "&email=" + encodeURI(payload.email) +
+    "&company=" + encodeURI(payload.company);
+}
+
 function getMailRequestPayload(payload) {
-  if (payload.email !== undefined) {
-    return {
-      from: 'HashCIB Message Bot <info@hashcib.com>',
-      to: "research@hashcib.com",
-      subject: 'Новый завпрос на TON Research',
-      html: "<html><body><p>Привет,</p><p>Новый запрос:</p><ul><li><b>Имя:</b> " + payload.name + " " + payload.surname + "</li><li><b>Email:</b> " + payload.email + "</li><li><b>Компания:</b> " + payload.company + "</li></ul><p>/HashCIB Message Bot</p></body></html>"
-    }
+  return {
+    from: 'HashCIB Message Bot <info@hashcib.com>',
+    to: "research@hashcib.com",
+    subject: 'Новый завпрос на TON Research',
+    html:
+      "<html><body><p>Привет,</p><p>Новый запрос:</p>" +
+      "<ul><li><b>Имя:</b> " + payload.name + " " + payload.surname +
+      "</li><li><b>Email:</b> " + payload.email +
+      "</li><li><b>Компания:</b> " + payload.company +
+      "</li></ul>" +
+      "<p><a href=\"" + generateReportRequestLink(payload) + "\">Отправить отчёт этому пользователю</a></p>" +
+      "<p>/HashCIB Message Bot</p></body></html>"
   }
-  return undefined;
 }
 
 function getReCAPTCHAVerifyPayload(token) {
   return {
     method: 'POST',
-    uri: 'https://www.google.com/recaptcha/api/siteverify?secret=' + functions.config().hash.gsecret + '&response=' + token,
+    uri: 'https://www.google.com/recaptcha/api/siteverify?secret=' +
+      functions.config().hash.gsecret +
+      '&response=' + token,
     json: true,
   };
 }
