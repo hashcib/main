@@ -189,7 +189,7 @@ function onResearchSubmit(event) {
     $form.attr('disabled', true);
 
     grecaptcha.ready(function() {
-        grecaptcha.execute(GRECAPTCHA, {action: 'feedback'})
+        grecaptcha.execute(GRECAPTCHA, {action: 'ton'})
             .then(function(token) {
                 var data = $form.serializeArray();
                 data.push({name: 'gtoken', value: token});
