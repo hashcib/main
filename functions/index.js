@@ -84,8 +84,7 @@ function getMailRequestPayload(payload) {
   if (payload.email !== undefined) {
     return {
       from: 'HashCIB Message Bot <info@hashcib.com>',
-      //to: "research@hashcib.com",
-      to: "kalambet@qiwi.tech",
+      to: "research@hashcib.com",
       subject: 'Новый завпрос на TON Research',
       html: "<html><body><p>Привет,</p><p>Новый запрос:</p><ul><li><b>Имя:</b> " + payload.name + " " + payload.surname + "</li><li><b>Email:</b> " + payload.email + "</li><li><b>Компания:</b> " + payload.company + "</li></ul><p>/HashCIB Message Bot</p></body></html>"
     }
@@ -101,7 +100,7 @@ function getReCAPTCHAVerifyPayload(token) {
   };
 }
 
-function sanitizeFeedbackPayload(payload)  { 
+function sanitizeTONPayload(payload)  { 
   return {
     name: sanitizer.sanitize(payload.name),
     surname: sanitizer.sanitize(payload.surname),
@@ -110,7 +109,7 @@ function sanitizeFeedbackPayload(payload)  {
   }
 }
 
-function sanitizeTONPayload(payload)  { 
+function sanitizeFeedbackPayload(payload)  { 
   return {
     name: sanitizer.sanitize(payload.name),
     email: sanitizer.sanitize(payload.email),
