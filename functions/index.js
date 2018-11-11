@@ -81,11 +81,12 @@ function getTonSlackPayload(payload) {
 }
 
 function generateReportRequestLink(payload) { 
-  return functions.config().hash.tonurl +
-    "?token=" + functions.config().hash.tonsecret +
-    "&name=" + encodeURI(payload.name + " " + payload.surname) +
-    "&email=" + encodeURI(payload.email) +
-    "&company=" + encodeURI(payload.company);
+  return "#";
+  // return functions.config().hash.tonurl +
+  //   "?token=" + functions.config().hash.tonsecret +
+  //   "&name=" + encodeURI(payload.name + " " + payload.surname) +
+  //   "&email=" + encodeURI(payload.email) +
+  //   "&company=" + encodeURI(payload.company);
 }
 
 function getMailRequestPayload(payload) {
