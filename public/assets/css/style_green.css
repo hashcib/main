@@ -333,6 +333,17 @@ header a.active {
 .tw:hover {
   background-image: url(../img/twitter_green.svg);
 }
+.medium {
+  background: url(../img/medium.svg) no-repeat center;
+  background-size: 100% auto;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+.medium__green,
+.medium:hover {
+  background-image: url(../img/medium_green.svg);
+}
 .menu a {
   margin-right: 30px;
 }
@@ -721,6 +732,9 @@ form[novalidate] input[type="checkbox"]:invalid {
   }
   .owl-carousel .owl-nav button.owl-next {
     right: -10px;
+  }
+  #research_link {
+    margin-left: 0;
   }
 }
 @media only screen and (max-width: 842px) {
