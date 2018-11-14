@@ -81,18 +81,18 @@ function getTonSlackPayload(payload) {
 }
 
 function generateReportRequestLink(payload) { 
-  return "#";
-  // return functions.config().hash.tonurl +
-  //   "?token=" + functions.config().hash.tonsecret +
-  //   "&name=" + encodeURI(payload.name + " " + payload.surname) +
-  //   "&email=" + encodeURI(payload.email) +
-  //   "&company=" + encodeURI(payload.company);
+  //return "#";
+  return "http://" + functions.config().hash.tonurl +
+    "?token=" + functions.config().hash.tonsecret +
+    "&name=" + encodeURI(payload.name + " " + payload.surname) +
+    "&email=" + encodeURI(payload.email) +
+    "&company=" + encodeURI(payload.company);
 }
 
 function getMailRequestPayload(payload) {
   return {
     from: 'HashCIB Message Bot <info@hashcib.com>',
-    to: "research@hashcib.com",
+    to: process.env.GCLOUD_PROJECT == "stage" ? "d.naumov@qiwi.tech" : "research@hashcib.com",
     subject: 'Новый завпрос на TON Research',
     html:
       "<html><body><p>Привет,</p><p>Новый запрос:</p>" +
@@ -137,10 +137,6 @@ exports.feedback = functions.https.onRequest((req, res) => {
     return res.status(405).send('Method not allowed');
   }
 
-  if (req.body === undefined) {
-    return res.status(200).send('OK');
-  }
-
   if (req.body === undefined || req.body.gtoken === undefined) {
     return res.status(415).send('No payload we can work with :(');
   }
@@ -165,10 +161,6 @@ exports.feedback = functions.https.onRequest((req, res) => {
 exports.ton = functions.https.onRequest((req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).send('Method not allowed');
-  }
-
-  if (req.body === undefined) {
-    return res.status(200).send('OK');
   }
 
   if (req.body === undefined || req.body.gtoken === undefined) {
