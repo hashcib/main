@@ -95,7 +95,7 @@ function getMailRequestPayload(payload) {
   return {
     from: 'HashCIB Message Bot <info@hashcib.com>',
     // to: process.env.GCLOUD_PROJECT === "stage" ? "d.naumov@qiwi.tech" : "research@hashcib.com",
-    to: "d.naumov@qiwi.tech",
+    to: "research@hashcib.com",
     subject: 'Новый завпрос на TON Research',
     html:
       "<html><body><p>Привет,</p><p>Новый запрос:</p>" +
