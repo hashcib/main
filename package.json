@@ -13,5 +13,8 @@
   "scripts": {
     "start": "superstatic --config firebase.json --port 8899",
     "build": "lessc public/assets/css/style_blue.less public/assets/css/style_blue.css && lessc public/assets/css/style_green.less public/assets/css/style_green.css"
+  },
+  "dependencies": {
+    "eslint-plugin-promise": "^4.0.1"
   }
 }
