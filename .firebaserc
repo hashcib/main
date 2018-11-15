@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "hash-sx"
+    "default": "hash-sx",
+    "stage": "hash-sx-stage"
   }
 }
