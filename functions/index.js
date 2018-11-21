@@ -93,9 +93,9 @@ function generateReportRequestLink(payload) {
 
 function generateGoogleQueryURL(payload) {
   return "https://www.google.com/search" +
-    "?q=site:linkedin.com" +
-    encodeURI(payload.name) +
-    encodeURI(payload.surname) +
+    "?q=site:linkedin.com" + "+" +
+    encodeURI(payload.name) + "+" +
+    encodeURI(payload.surname) + "+" +
     encodeURI(payload.company);
 }
 
