@@ -91,9 +91,17 @@ function generateReportRequestLink(payload) {
     "&company=" + encodeURI(payload.company);
 }
 
-function generateGoogleQueryURL(payload) {
+function generateGoogleQueryInURL(payload) {
   return "https://www.google.com/search" +
     "?q=site:linkedin.com" + "+" +
+    encodeURI(payload.name) + "+" +
+    encodeURI(payload.surname) + "+" +
+    encodeURI(payload.company);
+}
+
+function generateGoogleQueryURL(payload) {
+  return "https://www.google.com/search" +
+    "?q=" +
     encodeURI(payload.name) + "+" +
     encodeURI(payload.surname) + "+" +
     encodeURI(payload.company);
@@ -111,6 +119,7 @@ function getMailRequestPayload(payload) {
       "</li><li><b>Email:</b> " + payload.email +
       "</li><li><b>Компания:</b> " + payload.company +
       "</li></ul>" +
+      "<p><a href=\"" + generateGoogleQueryInURL(payload) + "\">Проверить пользователя в google (linkedin)</a></p>" +
       "<p><a href=\"" + generateGoogleQueryURL(payload) + "\">Проверить пользователя в google</a></p>" +
       "<p><a href=\"" + generateReportRequestLink(payload) + "\">Отправить отчёт этому пользователю</a></p>" +
       "<p>/HashCIB Message Bot</p></body></html>"
