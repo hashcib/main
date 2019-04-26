@@ -65,3 +65,8 @@ node_modules/
 .env
 
 public.zip
+
+.DS_Store
+
+style_blue.css
+style_green.css

@@ -139,6 +139,19 @@ li{
     .line{
       margin: 55px auto 45px;
     }
+    .title {
+      margin-bottom: 10px;
+      &::after {
+        display: none;
+      }
+      & + .text {
+        margin-bottom: 85px;
+        position: relative;
+        &:after{
+          width: 86px; bottom: -30px; content:""; background: @color8; height: 1px; line-height: 0; left: 50%; margin-left: -43px; position: absolute;
+        }
+      }
+    }
   }
   &__5{
     padding: 50px 0 65px;
@@ -186,6 +199,8 @@ header{
   display: inline-block; width: 111px; height: 40px; background: url(../img/hash_logo_green.svg) no-repeat center; background-size: 100% auto;
   &__white{
     background-image: url(../img/hash_logo_white.svg); width: 346px; height: 130px; margin: 0 auto 20px;
+    position: relative;
+    right: 20px;
   }
 }
 .content{
@@ -261,7 +276,7 @@ header{
 }
 .link{
   &__about{
-    font-family: @Gilroy; text-transform: uppercase; font-size: 15px; letter-spacing: 4px; color: rgba(255,255,255,.5); position: absolute; left:50%; bottom:50px; margin-left: -33px; text-decoration: none;
+    font-family: @Gilroy; text-transform: uppercase; font-size: 15px; letter-spacing: 4px; color: rgba(255,255,255,.5); position: absolute; left:calc(50% - 70px); bottom:50px; text-decoration: none;
     .transition();
     &:hover{
       color: @color1;
@@ -299,7 +314,7 @@ header{
   margin-left: 40px;
 }
 .people{
-
+  text-align: center;
 }
 .man{
   padding: 0 0 0 210px; display: inline-block; width: 50%; vertical-align: top;
@@ -308,9 +323,11 @@ header{
   }
   &__name{
     font-size: 16px; text-transform: uppercase; color: @color2; font-weight: 500; margin: 35px 0 15px 0;
+    text-align: left;
   }
   &__text{
     font-size: 14px;
+    text-align: left;
   }
 }
 .business{
@@ -331,23 +348,28 @@ header{
       &__banknote{
         background-image: url(../img/green/icon_banknote.svg);
       }
+      &__profits{
+        background-image: url(../img/green/icon_profits.png);
+      }
     }
     &-top{
       margin-top: 100px;
     }
   }
+  &__block {
+    &:first-child {
+      height: 230px;
+    }
+  }
 }
 .owl-carousel{
-  img{
-    width: auto!important; display: inline-block!important;
-  }
   .owl-nav{
     button {
       &.owl-next,
       &.owl-prev {
         display: inline-block;
         position: absolute;
-        top: 0;
+        top: 30px;
         width: 18px;
         height: 35px;
         opacity: 0.2;
@@ -367,8 +389,13 @@ header{
 }
 .carousel-item{
   text-align: center;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  margin: 0 30px;
   img{
-    max-height: 30px;
+    align-self: center;
   }
 }
 input[type=text], input[type=email]
@@ -415,6 +442,10 @@ p{
 }
 .hideDesktop{
   display: none;
+}
+
+.partners {
+  display: flex;
 }
 
 dialog {
@@ -678,6 +709,11 @@ form[novalidate] {
     >div{
       width: 100%;
     }
+    &__block {
+      &:first-child {
+        height: auto;
+      }
+    }
   }
   .man{
     width: 100%; padding-left: 136px;
@@ -716,10 +752,18 @@ form[novalidate] {
     display: block!important;
   }
   .owl-carousel{
-    display: block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
   .carousel-item{
-    display: inline-block; width: 50%; vertical-align: middle; margin-bottom: 50px;
+    margin: 0;
+    flex-grow: unset;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+    }
   }
   .form{
     margin-top: 0;
@@ -818,5 +862,15 @@ form[novalidate] {
   }
   #research_link {
     margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .logo {
+    &__white {
+      background-size: contain;
+      width: 90%;
+      right: 0;
+    }
   }
 }
